@@ -251,7 +251,7 @@ fetch("https://randomuser.me/api/?results=12&nat=us,gb")
 
 // async/await call to the same API
 async function getUsers() {
-    let response = await fetch();
+    let response = await fetch("https://randomuser.me/api/?results=12&nat=us,gb");
 
     // throw an error if error in resposne
     if(response.error) {
