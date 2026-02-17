@@ -238,7 +238,6 @@ function displayUsers(output, id, data){
 // https://randomuser.me/api/?results=12&nat=us,gb
 
 // fetch call to the API
-// Complete the code to call the API and display the returned data on the page in the correct place
 fetch("https://randomuser.me/api/?results=12&nat=us,gb")
     .then(response => response.json())
     .then(data => {
@@ -250,9 +249,24 @@ fetch("https://randomuser.me/api/?results=12&nat=us,gb")
         console.error(err);
     });
 
-
 // async/await call to the same API
-// TO DO - Complete the code to call the API using an async function
+async function getUsers() {
+    let response = await fetch();
+
+    // throw an error if error in resposne
+    if(response.error) {
+        throw new Error(response.error);
+    }
+
+    return await response.json();
+}
 
 // call our async function and handle the returned promise 
-// TO DO - Complete the code to handle the data returned from the API and display the returned data on the page in the correct place
+getUsers()
+    .then(json => {
+        console.log(json);
+
+        // display to page
+        displayUsers("userPage2", "pagination2", json);
+    })
+    .catch(e => console.error(e.message));
